@@ -5,13 +5,15 @@ import { faCopyright } from '@fortawesome/free-regular-svg-icons';
 
 import { Link } from 'react-router-dom';
 
+import wind from '../media/Wind1.mp4';
+
 class Landing extends Component {
     state = {}
     render() {
         return (
             <div className='flex w-full'>
 
-                <div className='fixed flex justify-between w-full h-12 bg-white shadow-sm'>
+                <div className='fixed flex justify-between w-full h-12 bg-white shadow-sm z-20'>
 
                     <Link to={'/'} className='flex items-center h-full space-x-2 cursor-pointer'>
                         <span className='flex justify-center items-center h-12 w-12 bg-green-500'>
@@ -30,9 +32,13 @@ class Landing extends Component {
 
                 </div>
 
-                <div className='flex items-center flex-col w-full pt-12'>
-                    <div className='flex flex-col w-full items-center py-20 bg-neutral-900 space-y-16'>
-                        <span className='text-7xl font-black text-white leading-snug tracking-tighter'>Keep your customers up to date <br />...without destroying the planet.</span>
+                <video autoPlay loop muted className='fixed w-screen'>
+                    <source src={wind} type="video/mp4" />
+                </video>
+
+                <div className='flex items-center flex-col w-full pt-12 z-10'>
+                    <div className='flex flex-col w-full items-center py-20 bg-neutral-900 space-y-16 bg-opacity-60'>
+                        <span className='text-7xl font-black text-white drop-shadow-lg leading-snug tracking-tighter'>Keep your customers up to date <br />...without destroying the planet.</span>
                         <span className='text-xl text-white leading-snug tracking-tighter text-center font-normal'>
                             <span className='font-extrabold text-green-500'>GreenMail</span> leverages the <span className='underline underline-offset-2 decoration-dotted decoration-1 hover:decoration-solid cursor-pointer'>Green Software Foundation's Carbon-Aware API</span>, <br /> reducing your carbon footprint without compromising your connection to your customers.
                         </span>
