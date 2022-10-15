@@ -26,7 +26,7 @@ class Landing extends Component {
 
                     <div className='flex items-center'>
                         <span className='flex items-center h-full px-4 hover:bg-neutral-100 cursor-pointer'>About</span>
-                        <Link to='/login' className='flex items-center h-full px-4 hover:bg-neutral-100 cursor-pointer'> Log In</Link>
+                        <Link to={'/login'} className='flex items-center h-full px-4 hover:bg-neutral-100 cursor-pointer'> Log In</Link>
                         <Link to={'/signup'} className='flex items-center space-x-2 mx-1 px-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-sm h-10 transition'><span>Get Started</span> <span><FontAwesomeIcon icon={faArrowRight} /></span></Link>
                     </div>
 
@@ -80,8 +80,8 @@ class Landing extends Component {
                     <div className='flex flex-col w-full bg-black'>
                         <div className='flex flex-col px-32 pt-24 pb-12 space-y-2'>
                             <span className='text-xl text-white font-extrabold'>GreenMail</span>
-                            <span className='text-lg text-white font-light hover:underline cursor-pointer decoration-1 underline-offset-2'>Sign Up</span>
-                            <span className='text-lg text-white font-light hover:underline cursor-pointer decoration-1 underline-offset-2'>Log In</span>
+                            <Link to={'/signup'} className='text-lg text-white font-light hover:underline cursor-pointer decoration-1 underline-offset-2'> <span>Sign Up</span> </Link>
+                            <Link to={'/login'} className='text-lg text-white font-light hover:underline cursor-pointer decoration-1 underline-offset-2'> <span>Log In</span> </Link>
                         </div>
                         <div className='flex justify-center w-full py-12'>
                             <span className='flex items-center text-white space-x-2 text-sm'> <FontAwesomeIcon icon={faCopyright}></FontAwesomeIcon> <span>GreenMail 2022</span> </span>
