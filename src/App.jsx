@@ -8,6 +8,7 @@ import {
 import Landing from './routes/Landing';
 import Login from './routes/Login';
 import SignUp from './routes/SignUp';
+import DashBoard from './routes/Dashboard';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path='/' element={<Landing />}></Route>
         <Route exact path='/login' element={<Login />}></Route>
         <Route exact path='/signup' element={<SignUp />}></Route>
+        <Route exact path='/dashboard' element={<DashBoard />}></Route>
       </Routes>
 
     </Router>
