@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLeaf, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faLeaf } from '@fortawesome/free-solid-svg-icons';
 
 class Nav extends Component {
     state = {}

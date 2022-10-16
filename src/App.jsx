@@ -3,8 +3,7 @@ import './fonts.css';
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
 import Landing from './routes/Landing';
 import Login from './routes/Login';

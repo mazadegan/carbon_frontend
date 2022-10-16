@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { faLeaf, faArrowRight, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faLeaf, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
 
