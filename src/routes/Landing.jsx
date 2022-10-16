@@ -1,12 +1,15 @@
 import { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLeaf, faArrowRight, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faCopyright } from '@fortawesome/free-regular-svg-icons';
 import 'animate.css'
 
 import { Link } from 'react-router-dom';
 
 import wind from '../media/Wind1.mp4';
+import Nav from '../components/Nav/Nav';
+import NavLink from '../components/Nav/NavLink';
+import NavButton from '../components/Nav/NavButton';
 
 class Landing extends Component {
     state = {}
@@ -14,24 +17,11 @@ class Landing extends Component {
         return (
             <div className='flex w-full'>
 
-                <div className='fixed flex justify-between w-full h-12 bg-white shadow-sm z-20'>
-
-                    <Link to={'/'} className='flex items-center h-full space-x-2 cursor-pointer'>
-                        <span className='flex justify-center items-center h-12 w-12 bg-green-500'>
-                            <span className='text-white text-2xl'>
-                                <FontAwesomeIcon icon={faLeaf}></FontAwesomeIcon>
-                            </span>
-                        </span>
-                        <span className='text-xl font-bold'>GreenMail</span>
-                    </Link>
-
-                    <div className='flex items-center'>
-                        <span className='flex items-center h-full px-4 hover:bg-neutral-100 cursor-pointer'>About</span>
-                        <Link to={'/login'} className='flex items-center h-full px-4 hover:bg-neutral-100 cursor-pointer'> Log In</Link>
-                        <Link to={'/signup'} className='flex items-center space-x-2 mx-1 px-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-sm h-10 transition'><span>Get Started</span> <span><FontAwesomeIcon icon={faArrowRight} /></span></Link>
-                    </div>
-
-                </div>
+                <Nav>
+                    <NavLink route='/about'>About</NavLink>
+                    <NavLink route='/login'>Log In</NavLink>
+                    <NavButton route='/signup'>Get Started</NavButton>
+                </Nav>
 
                 <video autoPlay loop muted className='fixed w-screen'>
                     <source src={wind} type="video/mp4" />
