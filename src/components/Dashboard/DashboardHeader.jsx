@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLeaf, faSliders } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCaretRight, faChevronDown, faLeaf, faSliders } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 
 class DashboardHeader extends Component {
@@ -18,17 +18,18 @@ class DashboardHeader extends Component {
                 </span>
                 <span className="flex items-center space-x-6">
                     <span className="flex items-center space-x-2">
-                        <span className="relative flex justify-center items-center w-6 h-6 rounded-full text-neutral-500 hover:text-neutral-800 transition cursor-pointer">
-                            <FontAwesomeIcon icon={faBell}></FontAwesomeIcon>
+                        <span className="relative flex justify-center items-center w-7 h-7 rounded-full text-neutral-500 hover:text-neutral-800 transition cursor-pointer">
+                            <FontAwesomeIcon icon={faBell} className='text-lg'></FontAwesomeIcon>
                             <span className="absolute w-2 h-2 bg-orange-600 rounded-full top-0.5 right-0.5 animate-ping"></span>
                             <span className="absolute w-2 h-2 bg-orange-600 rounded-full top-0.5 right-0.5 z-10"></span>
                         </span>
                         <span className="flex justify-center items-center w-6 h-6 rounded-full text-neutral-500 hover:text-neutral-800 transition cursor-pointer">
-                            <FontAwesomeIcon icon={faSliders}></FontAwesomeIcon>
+                            <FontAwesomeIcon icon={faSliders} className='text-lg'></FontAwesomeIcon>
                         </span>
                     </span>
-                    <span className="flex items-center space-x-2">
+                    <span className="flex items-center space-x-2 hover:bg-neutral-200 h-full p-2 rounded-lg cursor-pointer">
                         <span className="text-sm font-semibold tracking-tighter">Jim Kardashian</span>
+                        <FontAwesomeIcon icon={faCaretDown} className='text-xs'></FontAwesomeIcon>
                         <span className="flex justify-center items-center h-8 w-8 rounded-full bg-blue-500"></span>
                     </span>
                 </span>

@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 
 class Login extends Component {
     state = {}
+    componentDidMount = () => {
+        document.title = 'GreenMail | Login'
+    }
     render() {
         return (
             <div className='flex justify-center items-center w-full h-screen bg-neutral-300'>

@@ -13,6 +13,9 @@ import NavButton from '../components/Nav/NavButton';
 
 class Landing extends Component {
     state = {}
+    componentDidMount = () => {
+        document.title = 'GreenMail | Home'
+    }
     render() {
         return (
             <div className='flex w-full'>
