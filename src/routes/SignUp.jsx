@@ -1,13 +1,40 @@
 import { Component } from 'react';
 import { faLeaf, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
+import axios from 'axios';
 
 class SignUp extends Component {
-    state = {}
+    state = {
+        FullName: "",
+        OrganizationName: "",
+        Email: "",
+        Password: "",
+    }
+
     componentDidMount = () => {
         document.title = 'GreenMail | Sign Up'
     }
+
+    doSignup = () => {
+        let requestBody = {
+            FullName: this.state.FullName,
+            OrganizationName: this.state.OrganizationName,
+            Email: this.state.Email,
+            Password: this.state.Password,
+        }
+
+        axios.post('http://localhost:1234/signup/add', requestBody).then((resp) => {
+            console.log(resp)
+            if (resp.status === 200) {
+                redirect('/login')
+            }
+        }).catch((err) => {
+            console.log(err)
+        })
+
+    }
+
     render() {
         return (
             <div className='flex justify-center items-center w-full h-screen bg-neutral-300'>
@@ -35,19 +62,19 @@ class SignUp extends Component {
                     </div>
                     <div className='flex flex-col w-full'>
                         <span className='text-neutral-600'>Full Name</span>
-                        <input className='w-full p-2 border rounded' type="text" />
+                        <input className='w-full p-2 border rounded' type="text" onChange={(event) => { this.setState({ FullName: event.target.value }) }} />
                     </div>
                     <div className='flex flex-col w-full'>
                         <span className='text-neutral-600'>Organization Name</span>
-                        <input className='w-full p-2 border rounded' type="text" />
+                        <input className='w-full p-2 border rounded' type="text" onChange={(event) => { this.setState({ OrganizationName: event.target.value }) }} />
                     </div>
                     <div className='flex flex-col w-full'>
                         <span className='text-neutral-600'>Email</span>
-                        <input className='w-full p-2 border rounded' type="text" />
+                        <input className='w-full p-2 border rounded' type="text" onChange={(event) => { this.setState({ Email: event.target.value }) }} />
                     </div>
                     <div className='flex flex-col w-full'>
                         <span className='text-neutral-600'>Password</span>
-                        <input className='w-full p-2 border rounded' type="password" />
+                        <input className='w-full p-2 border rounded' type="password" onChange={(event) => { this.setState({ Password: event.target.value }) }} />
                     </div>
                     <div className='flex w-full justify-between'>
                         <div className='flex items-center space-x-2'>
@@ -56,7 +83,7 @@ class SignUp extends Component {
                             </span>
                             <span>Remember me</span>
                         </div>
-                        <button className='px-4 py-2 bg-green-500 rounded text-white font-semibold'>Create an account</button>
+                        <button className='px-4 py-2 bg-green-500 rounded text-white font-semibold' onClick={this.doSignup}>Create an account</button>
                     </div>
                     <div className='flex'>
                         <span className='text-xs text-green-500 hover:underline hover:text-green-600 cursor-pointer'>Forgot your password?</span>
