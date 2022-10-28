@@ -1,16 +1,20 @@
-import { faCalendar, faClipboard, faCopyright, faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { faBars, faCode, faList } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faBars, faCode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Component } from "react";
+import {Navigate} from "react-router-dom";
 import APITab from "../components/Dashboard/APITab";
 import ComposerTab from "../components/Dashboard/ComposerTab";
 import DashboardHeader from "../components/Dashboard/DashboardHeader";
 import SchedulerTab from "../components/Dashboard/SchedulerTab";
 import SidebarButton from "../components/Dashboard/SidebarButton";
+import jwt_decode from "jwt-decode"
 
 class DashBoard extends Component {
     state = {
         activeTab: 'API',
+        loggedIn: true,
+        decodedToken: null,
     }
 
     setActiveTab = (tab) => {
@@ -21,6 +25,26 @@ class DashBoard extends Component {
     }
 
     componentDidMount = () => {
+        // handle redirect for if you're not logged in
+
+        const token = sessionStorage.getItem('jwt');
+
+        if (token != null) {
+            const decoded = jwt_decode(token)
+            this.setState({
+                token: sessionStorage.getItem('jwt'),
+                decodedToken: decoded,
+                userData: {
+                    FullName: decoded.FullName,
+                    Email: decoded.Email,
+                    OrganizationName: decoded.OrganizationName
+                }
+            })
+        } else {
+            this.setState({loggedIn: false})
+            alert('Error: Unauthorized. Please log in.')
+        }
+        
         document.title = 'GreenMail | Dashboard'
     }
 
@@ -40,11 +64,14 @@ class DashBoard extends Component {
                 </div>
 
                 <div className="flex flex-col flex-grow bg-neutral-50">
-                    <DashboardHeader></DashboardHeader>
+                    <DashboardHeader userData={this.state.userData}></DashboardHeader>
                     {this.state.activeTab === 'Composer' && <ComposerTab></ComposerTab>}
                     {this.state.activeTab === 'Scheduler' && <SchedulerTab></SchedulerTab>}
                     {this.state.activeTab === 'API' && <APITab></APITab>}
                 </div>
+
+                {this.state.loggedIn === false && <Navigate to={'/login'} replace={true}></Navigate>}
+
             </div>
         );
     }

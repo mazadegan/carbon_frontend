@@ -1,12 +1,34 @@
 import { Component } from 'react';
+import { Navigate } from 'react-router-dom';
 import { faLeaf, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends Component {
-    state = {}
+    state = {
+        Email: "",
+        Password: "",
+        loggedIn: false
+    }
     componentDidMount = () => {
         document.title = 'GreenMail | Login'
+    }
+    login = () => {
+        axios.post('http://localhost:1234/login', {
+            Email: this.state.Email,
+            Password: this.state.Password
+        })
+        .then((res) => {
+            console.log(res.data);
+            sessionStorage.setItem('jwt', res.data)
+            this.setState({
+                loggedIn: true
+            })
+        })
+        .catch((err) => {
+            console.error(err)
+        })
     }
     render() {
         return (
@@ -22,6 +44,7 @@ class Login extends Component {
                         <span className='text-xl font-bold'>GreenMail</span>
                     </Link>
 
+                    
                     <div className='flex items-center'>
                         <Link to='/' className='flex items-center h-full px-4 hover:bg-neutral-100 cursor-pointer'>Home</Link>
                     </div>
@@ -35,11 +58,11 @@ class Login extends Component {
                     </div>
                     <div className='flex flex-col w-full'>
                         <span className='text-neutral-600'>Email</span>
-                        <input className='w-full p-2 border rounded' type="text" />
+                        <input className='w-full p-2 border rounded' type="text" onInput={(e) => {this.setState({Email: e.target.value})}} />
                     </div>
                     <div className='flex flex-col w-full'>
                         <span className='text-neutral-600'>Password</span>
-                        <input className='w-full p-2 border rounded' type="password" />
+                        <input className='w-full p-2 border rounded' type="password" onInput={(e) => {this.setState({Password: e.target.value})}} />
                     </div>
                     <div className='flex w-full justify-between'>
                         <div className='flex items-center space-x-2'>
@@ -48,7 +71,10 @@ class Login extends Component {
                             </span>
                             <span>Remember me</span>
                         </div>
-                        <button className='px-4 py-2 bg-green-500 rounded text-white font-semibold'>Log In</button>
+                        <button className='px-4 py-2 bg-green-500 rounded text-white font-semibold' onClick={this.login}>Log In</button>
+                        {this.state.loggedIn && (
+                            <Navigate to={'/dashboard'} replace={true}></Navigate>
+                        )}
                     </div>
                     <div className='flex'>
                         <span className='text-xs text-green-500 hover:underline hover:text-green-600 cursor-pointer'>Forgot your password?</span>

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faCaretRight, faChevronDown, faLeaf, faSliders } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faLeaf, faSliders } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 
 class DashboardHeader extends Component {
@@ -28,7 +28,10 @@ class DashboardHeader extends Component {
                         </span>
                     </span>
                     <span className="flex items-center space-x-2 hover:bg-neutral-200 h-full p-2 rounded-lg cursor-pointer">
-                        <span className="text-sm font-semibold tracking-tighter">Jim Kardashian</span>
+                        <span className="flex flex-col flex-grow ">
+                            <span className="text-sm font-bold tracking-tighter">{this.props.userData != null ? this.props.userData.FullName : null}</span>
+                            <span className="text-xs font-semibold text-gray-500 tracking-tighter">{this.props.userData != null ? this.props.userData.OrganizationName : null}</span>
+                        </span>
                         <FontAwesomeIcon icon={faCaretDown} className='text-xs'></FontAwesomeIcon>
                         <span className="flex justify-center items-center h-8 w-8 rounded-full bg-blue-500"></span>
                     </span>
