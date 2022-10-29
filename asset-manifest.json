@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/carbon_frontend/static/css/main.44ae4d28.css",
+    "main.js": "/carbon_frontend/static/js/main.ccc72b25.js",
+    "static/js/787.cda612ba.chunk.js": "/carbon_frontend/static/js/787.cda612ba.chunk.js",
+    "static/media/Wind1.mp4": "/carbon_frontend/static/media/Wind1.9ea1e0fc082dc57803dc.mp4",
+    "index.html": "/carbon_frontend/index.html",
+    "main.44ae4d28.css.map": "/carbon_frontend/static/css/main.44ae4d28.css.map",
+    "main.ccc72b25.js.map": "/carbon_frontend/static/js/main.ccc72b25.js.map",
+    "787.cda612ba.chunk.js.map": "/carbon_frontend/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.44ae4d28.css",
+    "static/js/main.ccc72b25.js"
+  ]
+}
