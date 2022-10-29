@@ -1,11 +1,31 @@
 import { Component } from "react";
+import clipboard from 'clipboard';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboard } from "@fortawesome/free-regular-svg-icons";
-import { faLeaf } from "@fortawesome/free-solid-svg-icons";
+import jwt_decode from 'jwt-decode'
 
 class APITab extends Component {
-    state = {}
+    state = {
+        url: ""
+    }
+
+    buildURL = (MailingListString) => {
+        this.setState({
+            url: `http://localhost:1234/subscribe?MailingListString=${MailingListString}&Email=example@mail.com`
+        })
+    }
+
+    copyURL = () => {
+        clipboard.copy(this.state.url)
+        alert(`Copied url: ${this.state.url}`)
+    }
+
+    componentDidMount() {
+        const decoded = jwt_decode(this.props.jwt)
+        this.buildURL(decoded.NewsletterString)
+    }
+
     render() {
         return (
             <div className="flex justify-center items-center flex-grow px-6">
@@ -23,8 +43,10 @@ class APITab extends Component {
                         <span>.</span>
                     </span>
                     <span className="relative flex flex-col p-4 bg-neutral-200 rounded-lg ibm text-sm">
-                        <FontAwesomeIcon className="absolute right-4 top-4 text-neutral-500 hover:text-neutral-900 transition cursor-pointer" icon={faClipboard}></FontAwesomeIcon>
-                        <span className="flex overflow-x-auto font-light">http://www.greenmail.xyz/api/subscribe?key=auyw4i7h32ef2&mailing_list=my_newsletter</span>
+                        <FontAwesomeIcon onClick={this.copyURL} className="absolute right-4 top-4 text-neutral-500 hover:text-neutral-900 transition cursor-pointer" icon={faClipboard}></FontAwesomeIcon>
+                        <span className="flex overflow-x-auto font-light">
+                            {this.state.url}
+                        </span>
                     </span>
                 </div>
             </div>
