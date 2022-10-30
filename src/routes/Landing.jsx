@@ -51,12 +51,12 @@ class Landing extends Component {
                                 <span className='text-lg'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro voluptate ex nisi similique quasi aspernatur quibusdam, assumenda soluta accusantium voluptates dignissimos, dolor placeat vitae dolorem possimus totam. Magni, soluta vitae!</span>
                             </div>
                             <div className='flex justify-center items-center p-20 w-1/2 h-full'>
-                                <span className='text-2xl font-light'>Corporate Clipart Goes Here</span>
+                                <span className='text-2xl font-light'>Clipart Goes Here</span>
                             </div>
                         </div>
                         <div className='flex justify-center items-center w-full bg-white h-full'>
                             <div className='flex justify-center items-center p-20 w-1/2 h-full'>
-                                <span className='text-2xl font-light'>Corporate Clipart Goes Here</span>
+                                <span className='text-2xl font-light'>Clipart Goes Here</span>
                             </div>
                             <div className='flex flex-col p-20 w-1/2 space-y-4 bg-neutral-200 h-full justify-center'>
                                 <span className='text-3xl font-bold'>How does it work?</span>
@@ -73,7 +73,7 @@ class Landing extends Component {
                         </div>
                         <div className='flex flex-col justify-center items-center w-1/2 p-16 space-y-8'>
                             <div className='flex justify-center items-center w-full h-full bg-neutral-700 rounded-xl'>
-                                <span className='text-2xl font-light text-white'>Corporate Clipart Goes Here</span>
+                                <span className='text-2xl font-light text-white'>Clipart Goes Here</span>
                             </div>
                         </div>
                     </div>
