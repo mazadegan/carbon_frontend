@@ -1,5 +1,7 @@
 import { Component } from "react";
 import clipboard from 'clipboard';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboard } from "@fortawesome/free-regular-svg-icons";
@@ -18,7 +20,7 @@ class APITab extends Component {
 
     copyURL = () => {
         clipboard.copy(this.state.url)
-        alert(`Copied url: ${this.state.url}`)
+        toast("Copied url!")
     }
 
     componentDidMount() {
@@ -29,6 +31,7 @@ class APITab extends Component {
     render() {
         return (
             <div className="flex justify-center items-center flex-grow px-6">
+                <ToastContainer></ToastContainer>
                 <div className="flex flex-col max-w-lg space-y-6 p-8 border rounded-lg">
                     <span className="flex flex-col w-full space-y-2">
                         <span className="text-xl font-bold tracking-tight">Subscribe readers to your letters</span>

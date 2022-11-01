@@ -24,6 +24,8 @@ class DashBoard extends Component {
             activeTab: tab
         });
     }
+    
+    apiUrl = 'https://greenmail-backend.herokuapp.com'
 
     componentDidMount = () => {
         // handle redirect for if you're not logged in
@@ -66,7 +68,7 @@ class DashBoard extends Component {
 
                 <div className="flex flex-col flex-grow bg-neutral-50">
                     <DashboardHeader userData={this.state.userData}></DashboardHeader>
-                    {this.state.activeTab === 'Composer' && <ComposerTab jwt={this.state.token}></ComposerTab>}
+                    {this.state.activeTab === 'Composer' && <ComposerTab jwt={this.state.token} apiUrl={this.apiUrl}></ComposerTab>}
                     {/*this.state.activeTab === 'Scheduler' && <SchedulerTab></SchedulerTab>*/}
                     {this.state.activeTab === 'API' && <APITab jwt={this.state.token}></APITab>}
                 </div>

@@ -1,5 +1,7 @@
 import axios from "axios";
 import { Component } from "react";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class ComposerTab extends Component {
     state = {
@@ -26,10 +28,10 @@ class ComposerTab extends Component {
             MailingList: this.state.MailingList,
             jwt: this.props.jwt,
         }
-        axios.post('http://localhost:1234/saveletter', data)
+        axios.post(`${this.props.apiUrl}/saveletter`, data)
         .then((res) => {
             console.log(res);
-            alert('Letter saved!');
+            toast("Letter scheduled!");
             this.reset();
         })
         .catch((err) => {
@@ -52,6 +54,7 @@ class ComposerTab extends Component {
     render() {
         return (
             <div className="flex justify-center items-center flex-grow px-6">
+                <ToastContainer></ToastContainer>
                 <div className="flex flex-col w-2/5 space-y-6 p-8 border rounded-lg">
                     <span className="flex flex-col w-full space-y-2">
                         <span className="text-xl font-bold tracking-tight">Compose your letters</span>
@@ -69,8 +72,8 @@ class ComposerTab extends Component {
                             <input type="radio" className="accent-green-500" checked={true} readOnly/>
                             <span className="tracking-tight">Add to existing mailing list </span>
                             <select className="flex p-0.5 border rounded-lg tracking-tight font-medium" name="" id="">
-                                <option value="">My Newsletter</option>
-                                <option value="" disabled>My Marketing Letter</option>
+                                <option value="">My Marketing Letter</option>
+                                <option value="" disabled>My Newsletter</option>
                             </select>
                         </span>
                         <span className="flex items-center space-x-1">

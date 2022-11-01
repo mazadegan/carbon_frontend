@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import { faLeaf, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link, redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 
 class SignUp extends Component {
@@ -10,11 +11,14 @@ class SignUp extends Component {
         OrganizationName: "",
         Email: "",
         Password: "",
+        signupSuccessful: false
     }
 
     componentDidMount = () => {
         document.title = 'GreenMail | Sign Up'
     }
+
+    apiUrl = 'https://greenmail-backend.herokuapp.com'
 
     doSignup = () => {
         let requestBody = {
@@ -24,10 +28,12 @@ class SignUp extends Component {
             Password: this.state.Password,
         }
 
-        axios.post('http://localhost:1234/signup/add', requestBody).then((resp) => {
+        axios.post(`${this.apiUrl}/signup/add`, requestBody).then((resp) => {
             console.log(resp)
             if (resp.status === 200) {
-                redirect('/login')
+                this.setState({
+                    signupSuccessful: true,
+                })
             }
         }).catch((err) => {
             console.log(err)
@@ -89,6 +95,8 @@ class SignUp extends Component {
                         <span className='text-xs text-green-500 hover:underline hover:text-green-600 cursor-pointer'>Forgot your password?</span>
                     </div>
                 </div>
+                { this.state.signupSuccessful && <Navigate to={'/login'}></Navigate> }
+                
             </div>
         );
     }

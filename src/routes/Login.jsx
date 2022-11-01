@@ -14,8 +14,11 @@ class Login extends Component {
     componentDidMount = () => {
         document.title = 'GreenMail | Login'
     }
+
+    apiUrl = 'https://greenmail-backend.herokuapp.com'
+
     login = () => {
-        axios.post('http://localhost:1234/login', {
+        axios.post(`${this.apiUrl}/login`, {
             Email: this.state.Email,
             Password: this.state.Password
         })
