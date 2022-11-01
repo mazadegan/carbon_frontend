@@ -12,6 +12,7 @@ import DashBoard from './routes/Dashboard';
 import Anim from './routes/Anim';
 
 function App() {
+
   return (
     <Router className='flex w-full inter'>
       <Routes>

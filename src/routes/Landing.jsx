@@ -1,7 +1,8 @@
 import { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faChartGantt, faChartLine, faChartPie, faChevronDown, faCloud, faFire, faLeaf, faLineChart, faSmog } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faChartPie, faChevronDown, faLeaf, faLineChart, faSmog } from '@fortawesome/free-solid-svg-icons';
 import { faCopyright } from '@fortawesome/free-regular-svg-icons';
+import axios from 'axios';
 import 'animate.css'
 
 import { Link } from 'react-router-dom';
@@ -13,8 +14,18 @@ import NavButton from '../components/Nav/NavButton';
 
 class Landing extends Component {
     state = {}
+
+    apiUrl = 'https://greenmail-backend.herokuapp.com'
+
     componentDidMount = () => {
         document.title = 'GreenMail | Home'
+        axios.get(`${this.apiUrl}/ping`)
+        .then((res) => {
+            console.log(res.data);
+        })
+        .catch((err) => {
+            console.error(err)
+        })
     }
     render() {
         return (
